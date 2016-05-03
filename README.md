@@ -4,3 +4,8 @@ Starting in the top left corner of a 2×2 grid, and only being able to move to t
 ![Alt text](https://projecteuler.net/project/images/p015.gif "Optional Title")
 
 How many such routes are there through a 20×20 grid?
+
+
+Mathematical Explanation:
+
+http://joaoff.com/2008/01/20/a-square-grid-path-problem/
