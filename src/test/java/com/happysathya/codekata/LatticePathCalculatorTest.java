@@ -1,8 +1,6 @@
-import org.junit.Before;
-import org.junit.Test;
+package com.happysathya.codekata;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import org.junit.Before;
 
 public class LatticePathCalculatorTest {
 
@@ -12,6 +10,5 @@ public class LatticePathCalculatorTest {
     public void setup() {
         latticePathCalculator = new LatticePathCalculator();
     }
-
 
 }

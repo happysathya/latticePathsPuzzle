@@ -1,9 +1,6 @@
-apply plugin: 'idea'
 apply plugin: 'java'
 apply plugin: 'maven'
 
-archivesBaseName = 'java-pair-programming'
-group = 'com.tescobank'
 version = '0.1'
 
 repositories {
@@ -12,4 +9,8 @@ repositories {
 
 dependencies {
     testCompile "junit:junit:4.8.2"
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.13'
 }
