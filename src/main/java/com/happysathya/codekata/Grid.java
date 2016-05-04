@@ -3,13 +3,13 @@ package com.happysathya.codekata;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Grid {
+class Grid {
 
     private final Coordinate maxCoordinate;
     private final List<Coordinate> visitedCoordinates;
     private final List<Journey> journeyList;
 
-    public Grid(int size) {
+    Grid(int size) {
         maxCoordinate = new Coordinate(size, size);
         visitedCoordinates = new ArrayList<>();
         journeyList = new ArrayList<>();
@@ -23,7 +23,7 @@ public class Grid {
         return given.getY() < maxCoordinate.getY();
     }
 
-    public List<Coordinate> giveNearbyRoutes(Coordinate given) {
+    List<Coordinate> giveNearbyRoutes(Coordinate given) {
         List<Coordinate> routes = new ArrayList<>();
         if (canGoRight(given)) {
             routes.add(new Coordinate(given.getX() + 1, given.getY()));
@@ -34,21 +34,21 @@ public class Grid {
         return routes;
     }
 
-    public void addVisit(Coordinate given) {
+    void addVisit(Coordinate given) {
         if (canVisitAgain(given)) {
             visitedCoordinates.add(given);
         }
     }
 
-    public boolean canVisitAgain(Coordinate given) {
+    private boolean canVisitAgain(Coordinate given) {
         return !visitedCoordinates.contains(given);
     }
 
-    public void addJourney(Journey journey) {
+    void addJourney(Journey journey) {
         journeyList.add(journey);
     }
 
-    public List<Journey> getJourneyList() {
+    List<Journey> getJourneyList() {
         return journeyList;
     }
 }

@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class Journey {
+class Journey {
 
     private List<Coordinate> paths;
     private final Grid grid;
 
-    public Journey(Grid grid) {
+    Journey(Grid grid) {
         this.grid = grid;
     }
 
@@ -18,7 +18,7 @@ public class Journey {
         this.grid = grid;
     }
 
-    public void startJourney() {
+    void startJourney() {
         if (!Optional.ofNullable(paths).isPresent()) {
             paths = new ArrayList<>();
             paths.add(new Coordinate(0, 0));
@@ -38,7 +38,7 @@ public class Journey {
         });
     }
 
-    public List<Coordinate> getPaths() {
+    List<Coordinate> getPaths() {
         return paths;
     }
 }

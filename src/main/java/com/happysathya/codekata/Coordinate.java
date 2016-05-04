@@ -1,20 +1,20 @@
 package com.happysathya.codekata;
 
-public class Coordinate {
+class Coordinate {
 
     private final int x;
     private final int y;
 
-    public Coordinate(int x, int y) {
+    Coordinate(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-    public int getX() {
+    int getX() {
         return x;
     }
 
-    public int getY() {
+    int getY() {
         return y;
     }
 
