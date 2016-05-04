@@ -6,13 +6,9 @@ import java.util.List;
 class Grid {
 
     private final Coordinate maxCoordinate;
-    private final List<Coordinate> visitedCoordinates;
-    private final List<Journey> journeyList;
 
     Grid(int size) {
         maxCoordinate = new Coordinate(size, size);
-        visitedCoordinates = new ArrayList<>();
-        journeyList = new ArrayList<>();
     }
 
     private boolean canGoRight(Coordinate given) {
@@ -34,21 +30,4 @@ class Grid {
         return routes;
     }
 
-    void addVisit(Coordinate given) {
-        if (canVisitAgain(given)) {
-            visitedCoordinates.add(given);
-        }
-    }
-
-    private boolean canVisitAgain(Coordinate given) {
-        return !visitedCoordinates.contains(given);
-    }
-
-    void addJourney(Journey journey) {
-        journeyList.add(journey);
-    }
-
-    List<Journey> getJourneyList() {
-        return journeyList;
-    }
 }

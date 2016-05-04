@@ -2,6 +2,8 @@ package com.happysathya.codekata;
 
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 public class JourneyTest {
@@ -31,34 +33,32 @@ public class JourneyTest {
 
     @Test
     public void should_test_a_basic_grid_journey() {
-        Grid grid = new Grid(1);
-        new Journey(grid).startJourney();
+        List<List<Coordinate>> pathList = new Journey(new Grid(1)).getPathList();
 
-        assertEquals(binomial_coefficient(1), grid.getJourneyList().size());
-        printVisualJourney(grid);
+        assertEquals(binomial_coefficient(1), pathList.size());
+        printVisualJourney(pathList);
     }
 
     @Test
     public void should_test_a_simple_grid_journey() {
-        Grid grid = new Grid(2);
-        new Journey(grid).startJourney();
+        List<List<Coordinate>> pathList = new Journey(new Grid(2)).getPathList();
 
-        assertEquals(binomial_coefficient(2), grid.getJourneyList().size());
-        printVisualJourney(grid);
+        assertEquals(binomial_coefficient(2), pathList.size());
+        printVisualJourney(pathList);
     }
 
     @Test
     public void should_test_a_complex_grid_journey() {
-        Grid grid = new Grid(5);
-        new Journey(grid).startJourney();
+        List<List<Coordinate>> pathList = new Journey(new Grid(5)).getPathList();
 
-        assertEquals(binomial_coefficient(5), grid.getJourneyList().size());
-        printVisualJourney(grid);
+        assertEquals(binomial_coefficient(5), pathList.size());
+        printVisualJourney(pathList);
     }
 
-    private void printVisualJourney(Grid grid) {
-        grid.getJourneyList().forEach(journey -> {
-            journey.getPaths().forEach(coordinate -> {
+    private void printVisualJourney(List<List<Coordinate>> pathList) {
+        System.out.println(pathList.size());
+        pathList.forEach(paths -> {
+            paths.forEach(coordinate -> {
                 System.out.print("(" + coordinate.getX() + "," + coordinate.getY() + "), ");
             });
             System.out.println();
@@ -66,7 +66,7 @@ public class JourneyTest {
         System.out.println();
     }
 
-    private long binomial_coefficient(int n) {
+    private long binomial_coefficient(long n) {
         return (factorial(2 * n)) / (factorial(n) * factorial(n));
     }
 

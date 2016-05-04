@@ -2,43 +2,44 @@ package com.happysathya.codekata;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 class Journey {
 
-    private List<Coordinate> paths;
+    private PathAccumulator pathAccumulator;
     private final Grid grid;
 
     Journey(Grid grid) {
         this.grid = grid;
+        this.pathAccumulator = new PathAccumulator();
     }
 
-    private Journey(List<Coordinate> paths, Grid grid) {
-        this.paths = paths;
-        this.grid = grid;
+    List<List<Coordinate>> getPathList() {
+        ArrayList<Coordinate> coordinates = new ArrayList<>();
+        coordinates.add(new Coordinate(0, 0));
+        startJourney(coordinates);
+        return pathAccumulator.pathList;
     }
 
-    void startJourney() {
-        if (!Optional.ofNullable(paths).isPresent()) {
-            paths = new ArrayList<>();
-            paths.add(new Coordinate(0, 0));
-        }
+    private void startJourney(List<Coordinate> paths) {
         Coordinate lastCoordinate = paths.get(paths.size() - 1);
         List<Coordinate> nearbyRoutes = grid.giveNearbyRoutes(lastCoordinate);
         if (nearbyRoutes.isEmpty()) {
-            grid.addJourney(this);
+            pathAccumulator.addPaths(paths);
             return;
         }
         nearbyRoutes.forEach(coordinate -> {
             ArrayList<Coordinate> coordinates = new ArrayList<>();
             coordinates.addAll(paths);
             coordinates.add(coordinate);
-            grid.addVisit(coordinate);
-            new Journey(coordinates, grid).startJourney();
+            startJourney(coordinates);
         });
     }
 
-    List<Coordinate> getPaths() {
-        return paths;
+    private static class PathAccumulator {
+        private final List<List<Coordinate>> pathList = new ArrayList<>();
+
+        void addPaths(List<Coordinate> paths) {
+            pathList.add(paths);
+        }
     }
 }
