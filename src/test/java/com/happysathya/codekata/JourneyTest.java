@@ -55,6 +55,18 @@ public class JourneyTest {
         printVisualJourney(pathList);
     }
 
+    @Test
+    public void should_test_journeyWithoutPathList() {
+        assertEquals(binomial_coefficient(1), new JourneyWithoutPathList(new Grid(1)).getPathCount());
+        assertEquals(binomial_coefficient(2), new JourneyWithoutPathList(new Grid(2)).getPathCount());
+        assertEquals(binomial_coefficient(5), new JourneyWithoutPathList(new Grid(5)).getPathCount());
+
+        System.out.println("1: " + new JourneyWithoutPathList(new Grid(1)).getPathCount());
+        System.out.println("5: " + new JourneyWithoutPathList(new Grid(5)).getPathCount());
+        System.out.println("10: " + new JourneyWithoutPathList(new Grid(10)).getPathCount());
+        System.out.println("15: " + new JourneyWithoutPathList(new Grid(15)).getPathCount());
+    }
+
     private void printVisualJourney(List<List<Coordinate>> pathList) {
         System.out.println(pathList.size());
         pathList.forEach(paths -> {
